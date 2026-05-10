@@ -11,7 +11,6 @@
   width: 100%;
   max-width: 720px;
   text-align: center;
-  padding: 10px 20px;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.4s, transform 0.4s;
@@ -49,6 +48,7 @@
   font-weight: 600;
   padding: 4px 12px;
   border-radius: 8px;
+  maring-bottom: 10px;
 }
 
 .notApplicationPeriod {
