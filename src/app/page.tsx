@@ -76,6 +76,7 @@ export default function Home() {
   const [form, setForm] = useState<FormState>({
     timeSlot: '점심',
     students: [''],
+    pin: '',
   })
   const calendarRef = useRef<HTMLDivElement>(null)
 
