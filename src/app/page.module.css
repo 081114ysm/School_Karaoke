@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 720px;
   text-align: center;
-  padding: 10px 20px 16px;
+  padding: 10px 20px;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.4s, transform 0.4s;
@@ -24,7 +24,6 @@
 
 .logo {
   color: var(--accent);
-  margin-bottom: 4px;
   display: flex;
   justify-content: center;
 }
