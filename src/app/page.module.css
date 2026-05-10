@@ -48,7 +48,7 @@
   font-weight: 600;
   padding: 4px 12px;
   border-radius: 8px;
-  maring-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .notApplicationPeriod {
@@ -59,6 +59,7 @@
   font-weight: 600;
   padding: 4px 12px;
   border-radius: 8px;
+  margin-bottom: 8px;
 }
 
 /* Calendar */
