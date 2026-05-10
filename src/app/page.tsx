@@ -278,7 +278,7 @@ export default function Home() {
     <main className={styles.container}>
       <div className={`${styles.hero} ${isLoaded ? styles.fadeIn : ''}`}>
         <div className={styles.logo}>
-          <img src="/logo.png" alt="로고" height={120} />
+          <img src="/logo.png" alt="로고" height={100} />
         </div>
         <h1>경소노래방 신청</h1>
         <p className={styles.monthText}>{targetMonth + 1}월 경소노래방 신청</p>
