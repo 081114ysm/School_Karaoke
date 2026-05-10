@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 720px;
   text-align: center;
-  padding: 40px 24px 24px;
+  padding: 28px 20px 16px;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.4s, transform 0.4s;
@@ -28,14 +28,14 @@
 }
 
 .hero h1 {
-  font-size: 1.6rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--text);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .monthText {
-  font-size: 1rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   margin-bottom: 8px;
 }
@@ -44,9 +44,9 @@
   display: inline-block;
   background: var(--green);
   color: white;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  padding: 5px 14px;
+  padding: 4px 12px;
   border-radius: 8px;
 }
 
@@ -54,9 +54,9 @@
   display: inline-block;
   background: var(--red);
   color: white;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  padding: 4px 14px;
+  padding: 4px 12px;
   border-radius: 8px;
 }
 
@@ -129,11 +129,11 @@
 }
 
 .day {
-  min-height: 130px;
+  min-height: 86px;
   border: none;
   border-right: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
-  padding: 10px;
+  padding: 7px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -142,7 +142,7 @@
   cursor: default;
   transition: background 0.1s;
   border-radius: 0;
-  gap: 4px;
+  gap: 3px;
   position: relative;
 }
 
@@ -151,7 +151,7 @@
 
 /* Default day number color (gray) */
 .dayNum {
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 500;
   line-height: 1;
   color: #bbb;
@@ -520,16 +520,26 @@
 
 /* Mobile responsive */
 @media (max-width: 600px) {
-  .calendarContainer { width: 100%; border-radius: 0; border-left: none; border-right: none; }
-  .day { min-height: 88px; padding: 6px; gap: 3px; }
-  .dayNum { font-size: 0.78rem; }
-  .slotChip { font-size: 0.65rem; padding: 1px 4px; }
-  .reservedBadge { font-size: 0.65rem; padding: 2px 4px; }
-  .notAvailableLabel { font-size: 0.65rem; }
-  .hero h1 { font-size: 1.3rem; }
-  .calendarHeader { gap: 16px; padding: 10px 12px; }
-  .monthLabel { min-width: 90px; font-size: 0.9rem; }
-  .weekLabel { font-size: 0.72rem; }
-  .today .dayNum { min-width: 22px; height: 22px; }
+  .container { align-items: stretch; }
+  .hero { padding: 20px 16px 12px; }
+  .hero h1 { font-size: 1.1rem; }
+  .monthText { font-size: 0.8rem; }
+  .applicationPeriod, .notApplicationPeriod { font-size: 0.78rem; padding: 3px 10px; }
+  .logo img { height: 48px !important; }
+
+  .calendarContainer { width: 100%; border-radius: 0; border-left: none; border-right: none; margin-bottom: 24px; }
+  .calendarHeader { gap: 12px; padding: 8px 10px; }
+  .monthLabel { min-width: 80px; font-size: 0.85rem; }
+  .navBtn { font-size: 1.2rem; padding: 2px 8px; }
+  .cancelLink { font-size: 0.7rem; padding: 2px 6px; }
+
+  .weekLabel { font-size: 0.7rem; padding: 7px 0; }
+  .day { min-height: 58px; padding: 4px; gap: 2px; }
+  .dayNum { font-size: 0.75rem; }
+  .today .dayNum { min-width: 20px; height: 20px; font-size: 0.72rem; }
+  .slotChip { font-size: 0.55rem; padding: 1px 3px; border-radius: 2px; }
+  .reservedBadge { font-size: 0.55rem; padding: 1px 3px; }
+  .notAvailableLabel { font-size: 0.55rem; }
+  .disabledReason { font-size: 0.65rem; }
 }
 
