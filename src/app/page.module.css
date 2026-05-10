@@ -65,7 +65,7 @@
 /* Calendar */
 .calendarContainer {
   width: calc(100% - 32px);
-  max-width: 680px;
+  max-width: 780px;
   background: white;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
@@ -131,7 +131,7 @@
 }
 
 .day {
-  min-height: 108px;
+  min-height: 120px;
   border: none;
   border-right: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
@@ -208,9 +208,9 @@
 }
 
 .slotChip {
-  font-size: 0.78rem;
+  font-size: 0.63rem;
   font-weight: 600;
-  padding: 2px 6px;
+  padding: 1px 5px;
   border-radius: 3px;
   white-space: nowrap;
   overflow: hidden;
