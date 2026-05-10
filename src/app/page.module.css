@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 720px;
   text-align: center;
-  padding: 28px 20px 16px;
+  padding: 10px 20px 16px;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.4s, transform 0.4s;
@@ -25,6 +25,8 @@
 .logo {
   color: var(--accent);
   margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
 }
 
 .hero h1 {
@@ -129,7 +131,7 @@
 }
 
 .day {
-  min-height: 86px;
+  min-height: 108px;
   border: none;
   border-right: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
