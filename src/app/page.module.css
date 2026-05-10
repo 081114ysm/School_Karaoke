@@ -63,7 +63,7 @@
 /* Calendar */
 .calendarContainer {
   width: calc(100% - 32px);
-  max-width: 900px;
+  max-width: 680px;
   background: white;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
