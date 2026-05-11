@@ -37,16 +37,23 @@ function getFirstStudent(studentsJson: string): string {
 
 const MONTH_NAMES = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
 
-const TEST_MODE = true // 테스트 중: 신청 기간 제한 무시
+const TEST_MODE = false // 테스트 중: 신청 기간 제한 무시
+
+function isMay2026Exception(): boolean {
+  const now = new Date()
+  return now.getFullYear() === 2026 && now.getMonth() === 4
+}
 
 function isApplicationPeriod(): boolean {
   if (TEST_MODE) return true
+  if (isMay2026Exception()) return true
   const now = new Date()
   const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate()
   return now.getDate() >= lastDay - 6
 }
 
 function getTargetMonth() {
+  if (isMay2026Exception()) return { year: 2026, month: 4 }
   const now = new Date()
   let year = now.getFullYear()
   let month = now.getMonth() + 1
@@ -146,6 +153,7 @@ export default function Home() {
     if (monthType !== 'current') return 'otherMonth'
     if (!isTargetMonth) return 'otherView'
     if (date < todayStr) return 'past'
+    if (viewYear === 2026 && viewMonth === 4 && (date < '2026-05-25' || date > '2026-05-29')) return 'unavailable'
     if (disabledMap.has(date)) return 'disabled'
     if (lunchByDate.has(date) && dinnerByDate.has(date)) return 'fullyReserved'
     if (isFriday(date) && lunchByDate.has(date)) return 'fullyReserved'
