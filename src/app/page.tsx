@@ -20,6 +20,7 @@ type DayState =
   | 'otherView'
   | 'past'
   | 'disabled'
+  | 'weekend'
   | 'fullyReserved'
   | 'available'
   | 'unavailable'
@@ -78,6 +79,7 @@ export default function Home() {
   const [disabledDates, setDisabledDates] = useState<DisabledDate[]>([])
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [showNoticeModal, setShowNoticeModal] = useState(false)
+  const [showWeekendModal, setShowWeekendModal] = useState(false)
   const [showFormModal, setShowFormModal] = useState(false)
   const [showCancelModal, setShowCancelModal] = useState(false)
   const [cancelInput, setCancelInput] = useState('')
@@ -151,11 +153,17 @@ export default function Home() {
     return new Date(date).getDay() === 5
   }
 
+  function isWeekend(date: string): boolean {
+    const day = new Date(date).getDay()
+    return day === 0 || day === 6
+  }
+
   function getDayState(date: string, monthType: MonthType): DayState {
     if (monthType !== 'current') return 'otherMonth'
     if (!isTargetMonth) return 'otherView'
     if (date <= todayStr) return 'past'
     if (disabledMap.has(date)) return 'disabled'
+    if (isWeekend(date)) return 'weekend'
     if (viewYear === 2026 && viewMonth === 4 && (date < '2026-05-25' || date > '2026-05-29')) return 'unavailable'
     if (lunchByDate.has(date) && dinnerByDate.has(date)) return 'fullyReserved'
     if (isFriday(date) && lunchByDate.has(date)) return 'fullyReserved'
@@ -172,6 +180,7 @@ export default function Home() {
       state === 'disabled' ||
       state === 'fullyReserved'
     ) return
+    if (state === 'weekend') { setShowWeekendModal(true); return }
     if (state === 'unavailable') { setShowNoticeModal(true); return }
     setSelectedDate(cell.date)
     const lunchTaken = lunchByDate.has(cell.date)
@@ -318,7 +327,7 @@ export default function Home() {
           {cells.map(cell => {
             const state = getDayState(cell.date, cell.monthType)
             const isActive =
-              (state === 'available' || state === 'unavailable' || state === 'fullyReserved') &&
+              (state === 'available' || state === 'unavailable' || state === 'fullyReserved' || state === 'weekend') &&
               cell.monthType === 'current' &&
               isTargetMonth
             const isToday = cell.date === todayStr
@@ -364,6 +373,30 @@ export default function Home() {
           })}
         </div>
       </div>
+
+      {showWeekendModal && (
+        <div className={styles.backdrop} onClick={() => setShowWeekendModal(false)}>
+          <div className={styles.modal} onClick={e => e.stopPropagation()}>
+            <div className={styles.modalHeader}>
+              <h2>주말 운영 안내</h2>
+              <button className={styles.closeBtn} onClick={() => setShowWeekendModal(false)}>
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+              </button>
+            </div>
+            <div className={styles.modalBody}>
+              <div className={styles.noticeContent}>
+                <svg viewBox="0 0 24 24" width="48" height="48" fill="#ef4444">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+                <p>주말은 운영을 하지 않습니다.</p>
+                <button className={styles.modalBtn} onClick={() => setShowWeekendModal(false)}>확인</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showNoticeModal && (
         <div className={styles.backdrop} onClick={() => setShowNoticeModal(false)}>

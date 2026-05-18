@@ -186,6 +186,9 @@
 .unavailable { cursor: pointer; }
 .unavailable .dayNum { color: #aaa; }
 
+.weekend { cursor: pointer; background: #fff5f5; }
+.weekend .dayNum { color: #f87171; }
+
 /* Today: filled circle on the day number */
 .today .dayNum {
   display: inline-flex;
