@@ -65,7 +65,7 @@
 /* Calendar */
 .calendarContainer {
   width: calc(100% - 32px);
-  max-width: 780px;
+  max-width: 640px;
   background: white;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
@@ -131,7 +131,7 @@
 }
 
 .day {
-  min-height: 120px;
+  min-height: 88px;
   border: none;
   border-right: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;

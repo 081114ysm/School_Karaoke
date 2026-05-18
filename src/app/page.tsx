@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { toast } from 'react-toastify'
 import styles from './page.module.css'
@@ -152,7 +154,7 @@ export default function Home() {
   function getDayState(date: string, monthType: MonthType): DayState {
     if (monthType !== 'current') return 'otherMonth'
     if (!isTargetMonth) return 'otherView'
-    if (date < todayStr) return 'past'
+    if (date <= todayStr) return 'past'
     if (disabledMap.has(date)) return 'disabled'
     if (viewYear === 2026 && viewMonth === 4 && (date < '2026-05-25' || date > '2026-05-29')) return 'unavailable'
     if (lunchByDate.has(date) && dinnerByDate.has(date)) return 'fullyReserved'
